@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126104839) do
+ActiveRecord::Schema.define(version: 20131126114000) do
 
   create_table "agencies", force: true do |t|
     t.string   "agency_id",       null: false
@@ -37,6 +37,23 @@ ActiveRecord::Schema.define(version: 20131126104839) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
+
+  create_table "stops", force: true do |t|
+    t.string   "stop_id",             null: false
+    t.string   "stop_code"
+    t.string   "stop_name",           null: false
+    t.string   "stop_desc"
+    t.string   "stop_lat",            null: false
+    t.string   "stop_lon",            null: false
+    t.string   "stop_url"
+    t.string   "stop_timezone"
+    t.string   "zone_id"
+    t.string   "location_type"
+    t.string   "parent_station"
+    t.string   "wheelchair_boarding"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
