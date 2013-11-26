@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126114000) do
+ActiveRecord::Schema.define(version: 20131126134750) do
 
   create_table "agencies", force: true do |t|
     t.string   "agency_id",       null: false
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 20131126114000) do
     t.string   "agency_lang",     null: false
     t.string   "agency_phone",    null: false
     t.string   "agency_fare_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "calendars", force: true do |t|
+    t.string   "service_id"
+    t.string   "monday"
+    t.string   "tuesday"
+    t.string   "wednesday"
+    t.string   "thursday"
+    t.string   "friday"
+    t.string   "saturday"
+    t.string   "sunday"
+    t.string   "start_date"
+    t.string   "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,6 +53,34 @@ ActiveRecord::Schema.define(version: 20131126114000) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
 
+  create_table "routes", force: true do |t|
+    t.string   "route_id"
+    t.string   "agency_id"
+    t.string   "route_short_name"
+    t.string   "route_long_name"
+    t.string   "route_desc"
+    t.string   "route_type"
+    t.string   "route_url"
+    t.string   "route_color"
+    t.string   "route_text_color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stop_times", force: true do |t|
+    t.string   "trip_id"
+    t.string   "arrival_time"
+    t.string   "departure_time"
+    t.string   "stop_id"
+    t.string   "stop_sequence"
+    t.string   "stop_headsign"
+    t.string   "pickup_type"
+    t.string   "drop_off_type"
+    t.string   "shape_dist_traveled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "stops", force: true do |t|
     t.string   "stop_id",             null: false
     t.string   "stop_code"
@@ -51,6 +94,20 @@ ActiveRecord::Schema.define(version: 20131126114000) do
     t.string   "location_type"
     t.string   "parent_station"
     t.string   "wheelchair_boarding"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trips", force: true do |t|
+    t.string   "route_id"
+    t.string   "service_id"
+    t.string   "trip_id"
+    t.string   "trip_headsign"
+    t.string   "trip_short_name"
+    t.string   "direction_id"
+    t.string   "block_id"
+    t.string   "shape_id"
+    t.string   "wheelchair_accessible"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
