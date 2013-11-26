@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126104225) do
+ActiveRecord::Schema.define(version: 20131126104839) do
+
+  create_table "agencies", force: true do |t|
+    t.string   "agency_id",       null: false
+    t.string   "agency_name",     null: false
+    t.string   "agency_url",      null: false
+    t.string   "agency_timezone", null: false
+    t.string   "agency_lang",     null: false
+    t.string   "agency_phone",    null: false
+    t.string   "agency_fare_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"
